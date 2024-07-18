@@ -11,7 +11,7 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222.2 84% 4.9%;
     --primary: #cbafd3;
-    --primary-foreground: #ffffff;
+    --primary-foreground: #743c83;
     --secondary: #cce8e5;
     --secondary-foreground: #375b56;
     --muted: 210 40% 96.1%;
@@ -29,6 +29,14 @@
     --chart-3: 197 37% 24%;
     --chart-4: 43 74% 66%;
     --chart-5: 27 87% 67%;
+  }
+
+  .secondary {
+    --background: #ffffff;
+    --primary: #cce8e5;
+    --primary-foreground: #2f514d;
+    --secondary:#cbafd3;
+    --card: #e7f4f5;
   }
 
   .dark {

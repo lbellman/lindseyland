@@ -1,7 +1,7 @@
 import type { Config } from "tailwindcss"
 
 export const TOPBAR_HEIGHT = '75px'
-export const SIDEBAR_WIDTH = '500px'
+export const SIDEBAR_WIDTH = '480px'
 const heights = {
   topbar: TOPBAR_HEIGHT,
   page: `calc(100vh - ${TOPBAR_HEIGHT})`,
@@ -34,7 +34,13 @@ const config = {
       },
       spacing: {
         ...widths,
-        ...heights
+        ...heights,
+        sm: "8px",
+        md: "16px",
+        lg: "24px",
+        xl: '48px',
+        '2xl': '96px',
+        '3xl': '192px',
       },
       height: {
         ...heights
