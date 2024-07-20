@@ -20,7 +20,7 @@
     --accent-foreground: 222.2 47.4% 11.2%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 210 40% 98%;
-    --border: #ceb9dc;
+    --border: #ede3f3;
     --input: 214.3 31.8% 91.4%;
     --ring: 222.2 84% 4.9%;
     --radius: 0.5rem;
@@ -37,6 +37,7 @@
     --primary-foreground: #2f514d;
     --secondary:#cbafd3;
     --card: #ebf5f5;
+    --border: #cceae7;
   }
 
   .dark {
@@ -66,6 +67,36 @@
     --chart-5: 340 75% 55%;
   }
 }
+
+h1 {
+  @apply text-primary-foreground text-5xl tracking-wider;
+}
+
+h2 {
+  @apply text-primary-foreground  text-4xl tracking-wider;
+}
+
+h3 {
+  @apply text-primary-foreground  text-3xl tracking-wider;
+}
+
+h4{
+  @apply text-primary-foreground  text-2xl tracking-widest;
+}
+
+.subtitle1{
+  @apply text-primary-foreground  text-xl tracking-wider;
+}
+
+p {
+  @apply text-primary-foreground  tracking-wider;
+}
+
+.body2 {
+  @apply text-primary-foreground  text-sm tracking-wider;
+}
+
+
 
 @layer base {
   * {
