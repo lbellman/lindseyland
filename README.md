@@ -6,7 +6,7 @@ Welcome to Lindseyland! This is a client/server application, so in order to run 
 ## Backend Server Setup
 
 ### Create a Python Environment
-Once you have cloned the repo, you will need to setup a Python Virtual Environment that runs Python3.10 or later. Make sure you do this **before** you install `requirements.txt`.
+Once you have cloned the repo, you will need to setup a Python Virtual Environment that runs Python 3.10 or later. Make sure you do this **before** you install `requirements.txt`.
 
 If you are on VSCode, type `Command-Shift-P` and select `Select Python Interpreter`, then follow the steps to create a new environment.
 
@@ -24,7 +24,7 @@ pip install requirements.txt
 
 
 ### PostgresQL Database Creation
-This project is using Django with a PostgresQL database and psycopg3 adapter. You will need to create your own PostgresQL database to run this project. 
+This project is using Django with a PostgresQL database and psycopg adapter. You will need to create your own PostgresQL database to run this project. 
 
 Go to [PostgresQL.org](https://www.postgresql.org/) and install postgres on your machine (recommended to use EDB and download the .dmg file that corresponds to your OS, this way you can walk step-by-step through the installation).
 
@@ -88,7 +88,7 @@ Make sure that the port number corresponds to the port that your database is run
 
 ### Populate the Database
 
-Now you have configured your database and told Django how to access it, you will need to migrate. This will create tables in your local database.
+Now you have configured your database and told Django how to access it, you will need to migrate. This will create tables in your local database. (Make sure you are in the `backend` directory before you run this command.)
 ```
 python manage.py migrate
 ```
