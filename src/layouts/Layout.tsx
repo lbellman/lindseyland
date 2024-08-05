@@ -6,11 +6,17 @@ import useThemeStore, { ThemeStoreType } from "@/stores/useThemeStore";
 import { useRouter } from "next/navigation";
 import Image from "next/image";
 
-export default function Layout({ children }: { children: React.ReactNode }) {
-  const { theme, setTheme } = useThemeStore((store: ThemeStoreType) => ({
+export default function Layout({
+  children,
+  blankBackground = false,
+}: {
+  children: React.ReactNode;
+  blankBackground?: boolean;
+}) {
+  const { theme } = useThemeStore((store: ThemeStoreType) => ({
     theme: store.theme,
-    setTheme: store.setTheme,
   }));
+  
   const router = useRouter();
 
   const mainImage =
@@ -28,20 +34,24 @@ export default function Layout({ children }: { children: React.ReactNode }) {
     <div
       className={"relative flex flex-col flex-nowrap bg-background  " + theme}
     >
-      {/* Sidebar Image */}
-      <div
-        className={
-          "md:w-sidebar w-screen fixed top-0 opacity-90 h-screen min-h-screen bg-cover bg-right bg-no-repeat z-[5] " +
-          mainImage
-        }
-      />
-      {/* Background Image */}
-      <div
-        className={
-          "fixed right-0 top-0 h-screen min-h-screen w-screen bg-cover bg-no-repeat " +
-          backgroundImage
-        }
-      />
+      {!blankBackground && (
+        <>
+          {/* Sidebar Image */}
+          <div
+            className={
+              "md:w-sidebar w-screen fixed top-0 opacity-90 h-screen min-h-screen bg-cover bg-right bg-no-repeat z-[5] " +
+              mainImage
+            }
+          />
+          {/* Background Image */}
+          <div
+            className={
+              "fixed right-0 top-0 h-screen min-h-screen w-screen bg-cover bg-no-repeat " +
+              backgroundImage
+            }
+          />
+        </>
+      )}
       {/* Topbar */}
       <div className="w-full pt-2 sticky top-0 px-2 h-topbar z-20">
         <div className="flex justify-between h-[60px] rounded-full sticky top-0 opacity-90 flex-nowrap items-center px-8 bg-card">
