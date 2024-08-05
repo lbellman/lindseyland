@@ -116,6 +116,12 @@ Your backend server is now up and running, open a separate terminal to complete 
 
 ## Frontend Setup
 
+If you are still in the backend directory, go back to the root directory.
+
+```
+cd ..
+```
+
 Install dependencies 
 
 ```bash

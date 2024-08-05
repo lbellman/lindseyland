@@ -1,17 +1,15 @@
 "use client";
+import Layout from "@/layouts/Layout";
 import useThemeStore, { ThemeStoreType } from "@/stores/useThemeStore";
-import { Button } from "@/components/ui/atoms/button";
+
 import {
-  ArrowLongLeftIcon,
   CodeBracketIcon,
   DocumentTextIcon,
   MusicalNoteIcon,
   PaintBrushIcon,
 } from "@heroicons/react/16/solid";
-import { useEffect, useRef, useState } from "react";
-import { Switch } from "@/components/ui/atoms/switch";
-import Layout from "@/layouts/Layout";
 import { useRouter } from "next/navigation";
+import { useEffect, useRef, useState } from "react";
 
 type BlockType = {
   key: string;
