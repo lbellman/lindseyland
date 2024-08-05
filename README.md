@@ -29,22 +29,34 @@ This project is using Django with a PostgresQL database and psycopg3 adapter. Yo
 Go to [PostgresQL.org](https://www.postgresql.org/) and install postgres on your machine (recommended to use EDB and download the .dmg file that corresponds to your OS, this way you can walk step-by-step through the installation).
 
 Connect to your database by running the following command in your terminal and entering the password you created during installation. 
-`psql -U postgres`
+```bash
+psql -U postgres
+```
 
 Create an owner for your database.
-`CREATE ROLE <username> LOGIN PASSWORD <password>;`
+```
+CREATE ROLE <username> LOGIN PASSWORD <password>;
+```
 
 Next, create a database with the owner being the user that you created above.
-`CREATE DATABASE <db_name> WITH OWNER <username>;`
+```
+CREATE DATABASE <db_name> WITH OWNER <username>;
+```
 
 Make a note of the port that your database is running on, you will need it for the next step.
-`SHOW port;`
+```
+SHOW port;
+```
 
 Exit the program by typing `\q`, and then run the following command in your terminal to check that your user and database have been created correctly.
-`psql -h localhost -d <db_name> -U <username> -p <port>`
+```bash
+psql -h localhost -d <db_name> -U <username> -p <port>
+```
 
 If it succeeded, you should see this in your terminal 
-`<db_name>=>`
+```
+<db_name>=>
+```
 
 
 ### Configure Django Database Settings
@@ -77,11 +89,15 @@ Make sure that the port number corresponds to the port that your database is run
 ### Populate the Database
 
 Now you have configured your database and told Django how to access it, you will need to migrate. This will create tables in your local database.
-`python manage.py migrate`
+```
+python manage.py migrate
+```
 
 ### Run the Backend Server
 
-`python manage.py runserver`
+```
+python manage.py runserver
+```
 
 
 ## Frontend Setup
