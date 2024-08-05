@@ -1,0 +1,8 @@
+type Query {
+  piles: [PileType]
+}
+
+type PileType {
+  type: String!
+  key: String
+}
