@@ -5,7 +5,7 @@ Welcome to Lindseyland! This is a client/server application, so in order to run 
 
 ## Backend Server Setup
 
-# Create a Python Environment
+### Create a Python Environment
 Once you have cloned the repo, you will need to setup a Python Virtual Environment that runs Python3.10 or later. Make sure you do this **before** you install `requirements.txt`.
 
 If you are on VSCode, type `Command-Shift-P` and select `Select Python Interpreter`, then follow the steps to create a new environment.
@@ -15,7 +15,7 @@ Otherwise, create a Python Virtual Environment in the root directory of this rep
 **Make sure you add your venv folder to your `.gitignore` file, otherwise you will end up with thousands of source control changes.**
 
 
-# Install Dependencies
+### Install Dependencies
 With your virtual environment activated, run the following commands in your terminal.
 ```
 cd backend 
@@ -23,7 +23,7 @@ pip install requirements.txt
 ```
 
 
-# PostgresQL Database Creation
+### PostgresQL Database Creation
 This project is using Django with a PostgresQL database and psycopg3 adapter. You will need to create your own PostgresQL database to run this project. 
 
 Go to [PostgresQL.org](https://www.postgresql.org/) and install postgres on your machine (recommended to use EDB and download the .dmg file that corresponds to your OS, this way you can walk step-by-step through the installation).
@@ -47,7 +47,7 @@ If it succeeded, you should see this in your terminal
 `<db_name>=>`
 
 
-# Configure Django Database Settings
+### Configure Django Database Settings
 Now that you have created your PostGresQL database, you will need to tell Django how to access it. 
 
 Create a file in your root directory called `.env` (add this file to your `.gitignore`, this is a crucial step to ensure that you don't accidentally commit sensitive information to a public repo). 
@@ -74,12 +74,12 @@ DATABASES = {
 ```
 Make sure that the port number corresponds to the port that your database is running on.
 
-# Populate the Database
+### Populate the Database
 
 Now you have configured your database and told Django how to access it, you will need to migrate. This will create tables in your local database.
 `python manage.py migrate`
 
-# Run the Backend Server
+### Run the Backend Server
 
 `python manage.py runserver`
 
