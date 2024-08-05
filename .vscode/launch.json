@@ -12,9 +12,19 @@
         "runserver"
       ],
       "console": "internalConsole",
+      "justMyCode": true,
       "django": true,
       "autoStartBrowser": false,
       "program": "${workspaceFolder}/backend/manage.py"
+    }, 
+    {
+      "name": "Generate GraphQL Schema",
+      "type": "debugpy",
+      "request": "launch",
+      "console": "internalConsole",
+      "program": "${workspaceFolder}/backend/manage.py",
+      "justMyCode": true,
+      "args": ["graphql_schema", "--schema", "config.schema.schema", "--out", "schema.graphql"],
     }
   ]
 }

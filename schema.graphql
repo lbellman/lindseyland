@@ -5,4 +5,5 @@ type Query {
 type PileType {
   type: String!
   key: String
+  name: String
 }

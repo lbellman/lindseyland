@@ -1,4 +1,5 @@
 "use client";
+import { PilesQueryQuery } from "@/__apolloGenerated__/graphql";
 import { CARD_ICONS } from "@/app/code/free-cell/@types";
 import Card from "@/app/code/free-cell/components/Card";
 import useFreeCellStore, { FreeCellStoreType } from "@/stores/useFreeCellStore";
@@ -10,16 +11,16 @@ export default function FreecellView() {
   } = useFreeCellStore((store: FreeCellStoreType) => ({
     game: store.game,
   }));
-  const { data: pileData, error } = useQuery(gql`
+  const { data: pileData, error } = useQuery<PilesQueryQuery>(gql`
     query PilesQuery {
-      piles {        
+      piles {
         type
         key
       }
     }
   `);
 
-  console.log("data", pileData);
+  console.log("pilesData", pileData);
 
   return (
     <div className="flex flex-col p-lg w-full flex-nowrap">

@@ -6,7 +6,7 @@ from freecell.models import Pile
 class PileType(DjangoObjectType):
     class Meta:
         model = Pile
-        fields = ("type", "key")
+        fields = ("type", "key", "name")
 
 
 class Query(graphene.ObjectType):
