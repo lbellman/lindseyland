@@ -1,9 +1,103 @@
 type Query {
   piles: [PileType]
+  cards: [CardType]
+  games: [GameType]
 }
 
 type PileType {
-  type: String!
-  key: String
-  name: String
+  game: GameType!
+  type: FreecellPileTypeChoices!
+}
+
+type GameType {
+  status: FreecellGameStatusChoices!
+  moveCount: Int!
+}
+
+"""An enumeration."""
+enum FreecellGameStatusChoices {
+  """Won"""
+  WON
+
+  """Lost"""
+  LOST
+
+  """In Progress"""
+  IN_PROGRESS
+}
+
+"""An enumeration."""
+enum FreecellPileTypeChoices {
+  """Column"""
+  COLUMN
+
+  """Foundation"""
+  FOUNDATION
+
+  """Free Cell"""
+  FREE_CELL
+}
+
+type CardType {
+  pile: PileType!
+  suit: FreecellCardSuitChoices!
+  rank: FreecellCardRankChoices!
+  sortOrder: Int!
+}
+
+"""An enumeration."""
+enum FreecellCardSuitChoices {
+  """Hearts"""
+  HEARTS
+
+  """Diamonds"""
+  DIAMONDS
+
+  """Spades"""
+  SPADES
+
+  """Clubs"""
+  CLUBS
+}
+
+"""An enumeration."""
+enum FreecellCardRankChoices {
+  """Ace"""
+  ACE
+
+  """Two"""
+  TWO
+
+  """Three"""
+  THREE
+
+  """Four"""
+  FOUR
+
+  """Five"""
+  FIVE
+
+  """Six"""
+  SIX
+
+  """Seven"""
+  SEVEN
+
+  """Eight"""
+  EIGHT
+
+  """Nine"""
+  NINE
+
+  """Ten"""
+  TEN
+
+  """Jack"""
+  JACK
+
+  """Queen"""
+  QUEEN
+
+  """King"""
+  KING
 }

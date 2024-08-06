@@ -25,8 +25,17 @@ export default function About() {
               <p>
                 Lindseyland is the place you go when you&apos;re day-dreaming.
                 It is a place where all ideas and passions can coexist with no
-                rules. There are no boundaries between disciplines here. Math,
-                art, music, code all take on the same form.
+                rules. There are no boundaries between disciplines here,
+                everything from math to art is appreciated and explored in the
+                same way. <br />
+                <br />
+                You will find all sorts of projects and creations here, feel
+                free to explore them all. If you are a reader and love to read
+                stories and poems, go make a cup of tea and then visit the{" "}
+                <a className="underline cursor-pointer" href="/writing">
+                  writing
+                </a>{" "}
+                section.
               </p>
 
               <p className="subtitle1 mb-md mt-xl ">WHO I AM</p>
@@ -37,7 +46,8 @@ export default function About() {
                 mould it into things that have never existed before and will
                 never exist again. I am a software engineer by profession, and
                 that allows me to design and build intricate systems with
-                real-world applications.
+                real-world applications. <br />
+                <br />
               </p>
             </div>
           </div>

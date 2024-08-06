@@ -4,8 +4,11 @@ import { Button } from "@/components/ui/atoms/button";
 import ThemeSwitcher from "@/components/ui/molecules/ThemeSwitcher";
 import useThemeStore, { ThemeStoreType } from "@/stores/useThemeStore";
 import { useRouter } from "next/navigation";
+// import { useRouter as useNextRouter } from "next/router";
 import Image from "next/image";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
+import { Router } from "next/router";
+import { Code } from "lucide-react";
 
 export default function Layout({
   children,
@@ -81,6 +84,7 @@ export default function Layout({
               >
                 LINDSEYLAND
               </p>
+              {<Code className="text-primary w-5 h-5 ml-md" />}
             </div>
             <div>
               <div className="flex items-center flex-nowrap">
@@ -104,7 +108,9 @@ export default function Layout({
         </div>
         {/* Children */}
         <div className="z-10 mt-lg">
-          <div className="flex justify-center w-full">{children}</div>
+          <div className="flex justify-center w-full animate-fade-in">
+            {children}
+          </div>
         </div>
         <div className="fixed bottom-4 right-4 z-[30]">
           <ThemeSwitcher />
