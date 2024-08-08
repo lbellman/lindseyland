@@ -3,12 +3,28 @@ import { ROUTES } from "@/app/globals";
 import { Button } from "@/components/ui/atoms/button";
 import ThemeSwitcher from "@/components/ui/molecules/ThemeSwitcher";
 import useThemeStore, { ThemeStoreType } from "@/stores/useThemeStore";
-import { useRouter } from "next/navigation";
-// import { useRouter as useNextRouter } from "next/router";
-import Image from "next/image";
+import { usePathname, useRouter } from "next/navigation";
 import { ApolloClient, ApolloProvider, InMemoryCache } from "@apollo/client";
-import { Router } from "next/router";
-import { Code } from "lucide-react";
+import {
+  CodeBracketIcon,
+  DocumentTextIcon,
+  MusicalNoteIcon,
+  PaintBrushIcon,
+} from "@heroicons/react/24/outline";
+import { AudioWaveform, Code } from "lucide-react";
+import Image from "next/image";
+
+export const PAGE_ICONS: (size: "sm" | "md") => {
+  [key: string]: React.ReactNode;
+} = (size) => {
+  const className = size === "sm" ? "size-5" : "size-7";
+  return {
+    code: <CodeBracketIcon className={className} />,
+    writing: <DocumentTextIcon className={className} />,
+    music: <AudioWaveform className={className} />,
+    art: <PaintBrushIcon className={className} />,
+  };
+};
 
 export default function Layout({
   children,
@@ -27,6 +43,7 @@ export default function Layout({
   });
 
   const router = useRouter();
+  const pathname = usePathname();
 
   const mainImage =
     theme === "primary"
@@ -84,7 +101,9 @@ export default function Layout({
               >
                 LINDSEYLAND
               </p>
-              {<Code className="text-primary w-5 h-5 ml-md" />}
+              <div className="flex items-center flex-nowrap text-primary ml-sm">
+                {PAGE_ICONS("sm")[pathname.replace("/", "")]}
+              </div>
             </div>
             <div>
               <div className="flex items-center flex-nowrap">

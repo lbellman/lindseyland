@@ -1,3 +1,6 @@
+from freecell.models import Pile
 from django.test import TestCase
 
-# Create your tests here.
+class PileModelTerst(TestCase):
+  def test_valid(self):
+    self.assertIs(True, True)

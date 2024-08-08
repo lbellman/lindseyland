@@ -1,7 +1,7 @@
 "use client";
 import { ROUTES } from "@/app/globals";
 import { Button } from "@/components/ui/atoms/button";
-import Layout from "@/layouts/Layout";
+import Layout, { PAGE_ICONS } from "@/layouts/Layout";
 import useThemeStore, { ThemeStoreType } from "@/stores/useThemeStore";
 
 import {
@@ -30,7 +30,7 @@ function Block({ block }: { block: BlockType }) {
       className="relative cursor-pointer overflow-hidden h-full bg-primary hover:p-2 duration-300 aspect-square transition-all rounded-3xl"
       onClick={() => router.push(block.route)}
     >
-      <div className="flex group flex-col w-full hover:bg-primary transition-all bg-card rounded-3xl items-center h-full justify-center flex-nowrap">
+      <div className="flex group flex-col w-full transition-all bg-card rounded-3xl items-center h-full justify-center flex-nowrap">
         {/* Icon */}
         <div className="text-primary absolute bottom-28 left-12 group-hover:bottom-60 group-hover:text-primary-foreground transition-all ease-out delay-300 duration-200 group-hover:delay-200 group-hover:duration-300">
           {block.icon}
@@ -79,28 +79,28 @@ export default function Home() {
       key: "code",
       label: "Code",
       route: ROUTES.CODE,
-      icon: <CodeBracketIcon className="size-8" />,
+      icon: PAGE_ICONS("md").code,
       hiddenText: "Coding projects.",
     },
     {
       key: "writing",
       label: "Writing",
       route: ROUTES.WRITING,
-      icon: <DocumentTextIcon className="size-8" />,
+      icon: PAGE_ICONS("md").writing,
       hiddenText: "Stories and poems.",
     },
     {
       key: "music",
       label: "Music",
       route: ROUTES.MUSIC,
-      icon: <MusicalNoteIcon className="size-8" />,
+      icon: PAGE_ICONS("md").music,
       hiddenText: "Original music.",
     },
     {
       key: "art",
-      label: "Art Projects",
+      label: "Art",
       route: ROUTES.ART,
-      icon: <PaintBrushIcon className="size-8" />,
+      icon: PAGE_ICONS("md").art,
       hiddenText: "Digital and physical art.",
     },
   ];

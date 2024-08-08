@@ -7,11 +7,13 @@ type Query {
 type PileType {
   game: GameType!
   type: FreecellPileTypeChoices!
+  cards: [CardType]
 }
 
 type GameType {
   status: FreecellGameStatusChoices!
   moveCount: Int!
+  piles: [PileType]
 }
 
 """An enumeration."""
@@ -39,10 +41,10 @@ enum FreecellPileTypeChoices {
 }
 
 type CardType {
-  pile: PileType!
+  pile: PileType
   suit: FreecellCardSuitChoices!
   rank: FreecellCardRankChoices!
-  sortOrder: Int!
+  sortOrder: Int
 }
 
 """An enumeration."""
@@ -100,4 +102,12 @@ enum FreecellCardRankChoices {
 
   """King"""
   KING
+}
+
+type Mutation {
+  createGame(create: Boolean): CreateFreeCellGame
+}
+
+type CreateFreeCellGame {
+  game: GameType
 }

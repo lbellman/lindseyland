@@ -8,7 +8,7 @@ export type ThemeStoreType = {
 };
 
 const useThemeStore = create<ThemeStoreType>((set) => ({
-  theme: "primary",
+  theme: "secondary",
   setTheme: (theme) => set({ theme }),
 }));
 

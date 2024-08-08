@@ -1,9 +1,10 @@
 "use client";
-import { PilesQueryQuery } from "@/__apolloGenerated__/graphql";
+import { GamesQueryQuery } from "@/__apolloGenerated__/graphql";
 import { CARD_ICONS } from "@/app/code/free-cell/@types";
 import Card from "@/app/code/free-cell/components/Card";
+import { Button } from "@/components/ui/atoms/button";
 import useFreeCellStore, { FreeCellStoreType } from "@/stores/useFreeCellStore";
-import { gql, useQuery } from "@apollo/client";
+import { gql, useMutation, useQuery } from "@apollo/client";
 
 export default function FreecellView() {
   const {
@@ -11,18 +12,47 @@ export default function FreecellView() {
   } = useFreeCellStore((store: FreeCellStoreType) => ({
     game: store.game,
   }));
-  const { data: pileData, error } = useQuery<PilesQueryQuery>(gql`
-    query PilesQuery {
-      piles {
-        type
-        key
+  const { data: gameData } = useQuery<GamesQueryQuery>(gql`
+    query GamesQuery {
+      games {
+        status
+        moveCount
+        piles {
+          type
+          cards {
+            suit
+            rank
+          }
+        }
       }
     }
   `);
 
-  console.log("pilesData", pileData);
+  const games = gameData?.games;
+  const [createGame, { data, loading, error }] = useMutation(
+    gql`
+      mutation CreateGame($create: Boolean) {
+        createGame(create: $create) {
+          game {
+            piles {
+              type
+              cards {
+                suit
+                rank
+              }
+            }
+            status
+            moveCount
+          }
+        }
+      }
+    `,
+    {
+      onCompleted: (data) => console.log("Complete!!", data),
+    }
+  );
 
-  return (
+  return games ? (
     <div className="flex flex-col p-lg w-full flex-nowrap">
       <div className="w-full">
         <div className="flex flex-nowrap justify-between w-full">
@@ -63,6 +93,31 @@ export default function FreecellView() {
             </div>
           </div>
         </div>
+      </div>
+    </div>
+  ) : (
+    <div className="bg-card rounded-md h-full p-xl items-center flex flex-col">
+      <div className="flex items-center flex-nowrap mb-md">
+        {Object.values(CARD_ICONS).map((icon, idx) => {
+          return (
+            <div
+              key={idx}
+              className={"text-primary " + (idx !== 0 ? "ml-md" : "")}
+            >
+              {icon}
+            </div>
+          );
+        })}
+      </div>
+      <p className="subtitle1">Welcome to Free Cell!</p>
+      <p>Create a new game to begin.</p>
+      <div className="mt-lg">
+        <Button
+          variant={loading ? "outline" : "default"}
+          onClick={() => createGame()}
+        >
+          New Game
+        </Button>
       </div>
     </div>
   );

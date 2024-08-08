@@ -19,10 +19,10 @@ export default function Code() {
               </Button>
             </div>
           </div>
-          <p className="mt-lg font-bold">Feeling like a challenge?</p>
+          <p className="mt-lg font-bold">Feel like a challenge?</p>
           <p className="mt-md body2">
             Exercise your logic and problem solving skills with a game of Free
-            Cell! This is known as the harder, more skill-based version of the
+            Cell. This is known as the harder, more skill-based version of the
             game of Solitaire. Game play is with a single person and a single
             deck of cards.
           </p>

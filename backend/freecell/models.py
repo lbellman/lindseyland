@@ -1,5 +1,4 @@
 import uuid
-
 from django.db import models
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
@@ -53,14 +52,24 @@ class Game(BaseModel):
     status = models.CharField(
         max_length=30, choices=GameStatusChoices, default=GameStatusChoices.IN_PROGRESS
     )
-    move_count = models.IntegerField()
+    move_count = models.IntegerField(default=0)
+
+    def complete_game(self, status):
+        if status not in GameStatusChoices:
+            raise Exception("Invalid status.")
+
+        self.status = status
+        self.save()
+
+        for pile in self.piles.all():
+            pile.delete()
 
     def __str__(self):
         return self.status
 
 
 class Pile(BaseModel):
-    game = models.ForeignKey(Game, on_delete=models.CASCADE)
+    game = models.ForeignKey(Game, related_name="piles", on_delete=models.CASCADE)
     type = models.CharField(max_length=30, choices=PileTypeChoices)
 
     def __str__(self):
@@ -68,10 +77,14 @@ class Pile(BaseModel):
 
 
 class Card(BaseModel):
-    pile = models.ForeignKey(Pile, on_delete=models.CASCADE)
+    pile = models.ForeignKey(
+        Pile, related_name="cards", on_delete=models.SET_NULL, null=True
+    )  # null pile implicitely means that card is still in the deck
     suit = models.CharField(max_length=10, choices=CardSuitChoices)
     rank = models.CharField(max_length=10, choices=CardRankChoices)
-    sort_order = models.IntegerField()
+    sort_order = models.IntegerField(
+        null=True
+    )  # if sort_order is null, card is still in deck
 
     def __str__(self):
         return f"{self.rank} of {self.suit}"
